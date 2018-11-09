@@ -1,0 +1,59 @@
+.section {
+  font-size: 20px;
+  margin-left: 50px;
+  margin-bottom: 25px;
+  margin-top: 10px;
+  width: 1000px;
+  border: 1px solid #b3b3b3;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+
+p {
+  margin: 1px;
+}
+
+
+#ranges {
+  padding-left: 50px;
+}
+
+.header {
+  font-size: 50px;
+  font-weight: bold;
+}
+
+#rangeTable tr td{
+  width: 100px;
+}
+
+#rangeTable, tr {
+  /*border: 1px solid #b3b3b3;*/
+}
+
+table, th, tr, td {
+  border-collapse: collapse;
+  border-top: 1px solid #c3c3c3;
+  border-bottom: 1px solid #c3c3c3;
+  border-left: 1px solid #c3c3c3;
+  border-right: 1px solid #c3c3c3;
+  padding: 1px 6px;
+  white-space: nowrap;
+}
+
+input {
+  width: 70px;
+  margin-bottom: 10px;
+  padding: 1px 6px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.deleteButton {
+  font-weight: bold;
+  color: red;
+  float: right;
+  width: 100%;
