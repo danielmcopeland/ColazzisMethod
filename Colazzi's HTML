@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Colazzi's Method</title>
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="ColazzisMethod.js"></script>
+    <div class="section header">
+      Colazzi's Method
+    </div>
+    <div class="section">
+      <p>Colazzi's Method takes data and organizes them based simply on whether the data fall into specific categories.</p>
+      <p>This is great for qualitative data and finding themes in written responses, but can cause inaccuracies when </p>
+      <p>dealing with relational data. (especially numerical data) This table uses data from a questionnaire on </p>
+      <p>appropriate salaries for music therapists to show the differences between using Colazzi's Method and using a </p>
+      <p>more traditional statistical analysis.</p>
+    </div>
+    <div class="section">
+      <p>Input salary ranges between $30000 and $90000</p>
+      <p>(example: 55000-65000)</p>
+      <input type="text" id="inputLow" placeholder="Low"></input>
+      <input type="text" id="inputHigh" placeholder="High"></input>
+      <button onClick="submitRange();">Submit</button><br>
+      <button onClick="sampleStudentRanges();">Use Sample Student Responses</button>
+      <button onClick="sampleAdminRanges();">Use Sample Administrator Responses</button>
+    </div>
+    <div id="ranges" class="section">
+      <h3>Method Comparisons</h3>
+      <table id="dataTable">
+        <tr class="bold">
+          <td>Salary Range</td>
+          <td>Colazzi's Method</td>
+          <td>Percentages</td>
+          <td>Modified Method</td>
+          <td>Percentages</td>
+        </tr>
+        <tr>
+          <td>$30000 - $39999</td>
+          <td>0</td>
+          <td>0%</td>
+          <td>0</td>
+          <td>0%</td>
+        </tr>
+        <tr>
+          <td>$40000 - $49999</td>
+          <td>0</td>
+          <td>0%</td>
+          <td>0</td>
+          <td>0%</td>
+        </tr>
+        <tr>
+          <td>$50000 - $59999</td>
+          <td>0</td>
+          <td>0%</td>
+          <td>0</td>
+          <td>0%</td>
+        </tr>
+        <tr>
+          <td>$60000 - $69999</td>
+          <td>0</td>
+          <td>0%</td>
+          <td>0</td>
+          <td>0%</td>
+        </tr>
+        <tr>
+          <td>$70000 - $79999</td>
+          <td>0</td>
+          <td>0%</td>
+          <td>0</td>
+          <td>0%</td>
+        </tr>
+        <tr>
+          <td>$80000 - $89999</td>
+          <td>0</td>
+          <td>0%</td>
+          <td>0</td>
+          <td>0%</td>
+        </tr>
+      </table>
+      <h3>Data Inputs</h3>
+      <table id="rangeTable">
+        <tr class="bold">
+          <td>Low</td>
+          <td>High</td>
+          <td><button class="deleteButton" onClick="deleteAllRanges();">Clear All</button></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
