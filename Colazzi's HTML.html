@@ -1,38 +1,45 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Colazzi's Method</title>
-    <link rel="shortcut icon" type="image/ico" href="favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="style.css">
-  </head>
-  <body>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="ColazzisMethod.js"></script>
-    <div class="section header">
-      Colazzi's Method
-    </div>
-    <div class="section">
-      <p>Colazzi's Method takes data and organizes them based simply on whether the data fall into specific categories.</p>
-      <p>This is great for qualitative data and finding themes in written responses, but can cause inaccuracies when </p>
-      <p>dealing with relational data. (especially numerical data) This table uses data from a questionnaire on </p>
-      <p>appropriate salaries for music therapists to show the differences between using Colazzi's Method and using a </p>
-      <p>more traditional statistical analysis.</p>
-    </div>
-    <div class="section">
-      <p>Input salary ranges between $30000 and $90000</p>
-      <p>(example: 55000-65000)</p>
-      <input type="text" id="inputLow" placeholder="Low"></input>
-      <input type="text" id="inputHigh" placeholder="High"></input>
-      <button onClick="submitRange();">Submit</button><br>
-      <button onClick="sampleStudentRanges();">Use Sample Student Responses</button>
-      <button onClick="sampleAdminRanges();">Use Sample Administrator Responses</button>
-    </div>
-    <div id="ranges" class="section">
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+
+  <title>Colaizzi's Method</title>
+  <link rel="shortcut icon" type="image/ico" href="favicon.ico">
+  <link rel="stylesheet" type="text/css" href="style.css?v=2">
+</head>
+<body>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="ColaizzisMethod.js?v=2"></script>
+  <div class="section header">
+    Colaizzi's Method
+  </div>
+  <div class="section">
+    <p>Below is a comparison of two methods of data analysis taken from an opinion survey on salary ranges for </p>
+    <p>music therapists. Responses came from health administrators and health administration students.</p>
+    <p>Colaizzi's Method identifies themes in responses and compares them based on their frequency. Since this</p>
+    <p>method sometimes pulls multiple pieces of data from individual responses, some responses become weighted</p>
+    <p>more heavily than others. This is effective for qualitative data and finding themes in written responses, </p>
+    <p>but can cause inaccuracies when dealing with relational data (especially numerical data). </p>
+    <br>
+    <p>You can see how these innaccuracies occur below.</p>
+  </div>
+  <div class="section">
+    <p>Input salary ranges between $30000 and $90000</p>
+    <p>(example: 45000-65000)</p>
+    <input type="number" id="inputLow" placeholder="Low">
+    <input type="number" id="inputHigh" placeholder="High">
+    <button onclick="submitRange();">Submit</button><br>
+    <button onclick="sampleStudentRanges();">Use Sample Student Responses</button>
+    <button onclick="sampleAdminRanges();">Use Sample Administrator Responses</button>
+  </div>
+  <div class="section">
+    <div id="ranges">
       <h3>Method Comparisons</h3>
       <table id="dataTable">
-        <tr class="bold">
+        <tbody><tr class="bold">
           <td>Salary Range</td>
-          <td>Colazzi's Method</td>
+          <td>Colaizzi's Method</td>
           <td>Percentages</td>
           <td>Modified Method</td>
           <td>Percentages</td>
@@ -79,15 +86,41 @@
           <td>0</td>
           <td>0%</td>
         </tr>
-      </table>
+      </tbody></table>
+      <div id="graphTitles" class="bold">
+        <div class="barTitle">Colaizzi's Method</div><div class="barTitle">Modified Method</div>
+      </div>
+      <div id="graph1">
+        <div class="barY"><div class="title100">100%</div></div><div class="bar col0" title="$30,000-$39,999"></div><div class="bar col1" title="$40,000-$49,999"></div><div class="bar col2" title="$50,000-$59,999"></div><div class="bar col3" title="$60,000-$69,999"></div><div class="bar col4" title="$70,000-$79,999"></div><div class="bar col5" title="$80,000-$89,999"></div>
+      </div>
+      <div id="graph2">
+        <div class="barY"><div class="title100">100%</div></div><div class="bar col0" title="$30,000-$39,999"></div><div class="bar col1" title="$40,000-$49,999"></div><div class="bar col2" title="$50,000-$59,999"></div><div class="bar col3" title="$60,000-$69,999"></div><div class="bar col4" title="$70,000-$79,999"></div><div class="bar col5" title="$80,000-$89,999"></div>
+      </div>
+      <div id="graphLabels">
+        <div class="barLabel"><div id="barX">30k</div><div id="barX">40k</div><div id="barX">50k</div><div id="barX">60k</div><div id="barX">70k</div><div id="barX">80k</div></div>
+        <div class="barLabel"><div id="barX">30k</div><div id="barX">40k</div><div id="barX">50k</div><div id="barX">60k</div><div id="barX">70k</div><div id="barX">80k</div></div>
+      </div>
       <h3>Data Inputs</h3>
       <table id="rangeTable">
-        <tr class="bold">
+        <tbody><tr class="bold">
           <td>Low</td>
           <td>High</td>
-          <td><button class="deleteButton" onClick="deleteAllRanges();">Clear All</button></td>
+          <td><button class="deleteButton" onclick="deleteAllRanges();">Clear All</button></td>
         </tr>
-      </table>
+      </tbody></table>
     </div>
-  </body>
-</html>
+  </div>
+  <div class="section">
+    <p>For a great example of the differences, clear all the entries and input 49000-59000.</p>
+    <br>
+    <p>Notice that while the majority of the input (49k-59k) falls under the range of 50000-59999,</p>
+    <p>Colaizzi's Method treats ANY ranges that the input falls into EQUALLY.</p>
+    <br>
+    <p>The modified method however adds weight to the portion of the input that falls in each range.</p>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+
+</body></html>

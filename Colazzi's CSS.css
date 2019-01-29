@@ -16,7 +16,8 @@ p {
 
 
 #ranges {
-  padding-left: 50px;
+  padding-left: 30px;
+  padding-bottom: 20px;
 }
 
 .header {
@@ -57,3 +58,70 @@ input {
   color: red;
   float: right;
   width: 100%;
+}
+
+#graphTitles {
+  padding: 20px;
+  padding-left: 55px;
+}
+
+#graphLabels {
+  padding-left: 63px;
+}
+
+#graphTitles div {
+  display: inline-block;
+  margin-right: 190px;
+}
+
+#graph1, #graph2 {
+  padding: 0px 20px;
+  display: inline-block;
+}
+
+#graph1 {
+  padding-right: 180px;
+}
+
+.bar {
+  display: inline-block;
+  width: 20px;
+  border: 1px solid black;
+  background-color: #da7ac2;
+}
+
+.barY {
+  display: inline-block;
+  width: 40px;
+  height: 100px;
+  /* background-color: black; */
+  border-right: 1px solid black;
+}
+
+#graphLabels div {
+  display: inline-block;
+}
+
+
+#barX {
+  font-size: 10px;
+  margin-right: 7.5px;
+}
+
+.barTitle, .barLabel {
+  width: 188px;
+}
+
+.barLabel {
+  margin-right: 186px;
+}
+.barLabel {
+  font-size: 70%;
+}
+
+.title100 {
+  display: block;
+  position: absolute;
+  font-size: 70%;
+}
+
