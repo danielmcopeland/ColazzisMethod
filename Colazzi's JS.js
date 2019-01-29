@@ -62,7 +62,7 @@ $(document).ready(function(){
             var lowEnd = (+lowSalary + +highSalary) / 2 - 5000;
             var highEnd = (+lowSalary + +highSalary) / 2 + 5000;
             addModifiedResponse(lowEnd, highEnd);
-            //break;
+            break;
           }
           
         }
@@ -282,4 +282,7 @@ $(document).ready(function(){
     $('#dataTable').append(dataTableRows);
   };
  
+  console.log("Hello");
+
+
 });
