@@ -1,12 +1,13 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+
+}
+
 .section {
   font-size: 20px;
-  margin-left: 50px;
-  margin-bottom: 25px;
-  margin-top: 10px;
-  width: 1000px;
   border: 1px solid #b3b3b3;
   border-radius: 3px;
-  padding: 5px;
+
 }
 
 
@@ -23,11 +24,11 @@ p {
 .header {
   font-size: 50px;
   font-weight: bold;
+  color: black;
+  background-color: #8a8787d2;
 }
 
-#rangeTable tr td{
-  width: 100px;
-}
+
 
 #rangeTable, tr {
   border: 1px solid #b3b3b3;
@@ -62,11 +63,11 @@ input {
 
 #graphTitles {
   padding: 20px;
-  padding-left: 55px;
+
 }
 
 #graphLabels {
-  padding-left: 63px;
+  padding-left: 30px;
 }
 
 #graphTitles div {
@@ -75,13 +76,10 @@ input {
 }
 
 #graph1, #graph2 {
-  padding: 0px 20px;
   display: inline-block;
 }
 
-#graph1 {
-  padding-right: 180px;
-}
+
 
 .bar {
   display: inline-block;
