@@ -1,7 +1,5 @@
 $(document).ready(function(){
   
-  var rangeOutput = '';
-  
   /*
    * Demonstration to show the difference between original Colazzi's Method for data analysis
    * vs modified Colazzi's method for the same.
@@ -61,10 +59,10 @@ $(document).ready(function(){
             // recursively
             // i.e. 40000-45000 becomes 37500-47500
             // this provides for more accurate data when put on a graph
-            var low = (lowSalary + highSalary) / 2 - 5000;
-            var high = (lowSalary + highSalary) / 2 + 5000;
-            addNewSalaryRange(low, high);
-            break;
+            var lowEnd = (+lowSalary + +highSalary) / 2 - 5000;
+            var highEnd = (+lowSalary + +highSalary) / 2 + 5000;
+            addModifiedResponse(lowEnd, highEnd);
+            //break;
           }
           
         }
@@ -141,23 +139,6 @@ $(document).ready(function(){
   };
   // populates bad badpercentages array
 
-  printArray = function() {
-    rangeOutput = "";
-    calculateModifiedPercentages();
-    calculateOriginalColazzisPercentages();
-    for (var i = 0, j = 30; i < modifiedResponses.length; i++, j += 10) {
-      //System.out.println(j + ",000 - " + (j + 9) + ",999 = " + originalColazzisResponses[i] + ", " + originalColazzisResponsesPercentage[i] + "%" + ", "
-      //    + modifiedResponses[i] + ", " + modifiedResponsesPercentage[i] + "%");
-      if(i > 0) {
-        rangeOutput += "<br>";
-      }
-      rangeOutput += (j + ",000 - " + (j + 9) + ",999 = " + originalColazzisResponses[i] + ", " + originalColazzisResponsesPercentage[i] + "%" + ", " + modifiedResponses[i] + ", " + modifiedResponsesPercentage[i] + "%");
-    }
-    //System.out.println("Totals: Colazzi's: " + originalColazzisSum() + ", Mine: " + modifiedResponsesSum());
-  };
-  // calls addBadPerc() and addRangePerc() then prints the organized data to the
-  // console for comparison
-
   originalColazzisSum = function() {
     var total = 0;
     $(originalColazzisResponses).each(function(i, s) {
@@ -202,7 +183,7 @@ $(document).ready(function(){
     return num;
   }
   
-  sampleStudentRanges = function() {
+  sampleAdminRanges = function() {
     deleteAllRanges();
     addRange(60000, 60000);
     addRange(40000, 50000);
@@ -220,7 +201,7 @@ $(document).ready(function(){
     addRange(40000, 45000);
   };
 
-  sampleAdminRanges = function() {
+  sampleStudentRanges = function() {
     deleteAllRanges();
     addRange(80000, 85000);
     addRange(45000, 50000);
@@ -254,8 +235,10 @@ $(document).ready(function(){
   
   addRange = function(low, high) {
     //addNewSalaryRange(low, high);
-    salaryRanges.push([low, high]);
-    recalculateRanges();
+    if(low <= high) {
+      salaryRanges.push([low, high]);
+      recalculateRanges();
+    }
   };
   
   deleteRange = function(i) {
@@ -268,7 +251,8 @@ $(document).ready(function(){
     $(salaryRanges).each(function(i, data) {
       addNewSalaryRange(data[0], data[1]);
     });
-    printArray();
+    calculateModifiedPercentages();
+    calculateOriginalColazzisPercentages();
     refreshRangeTable();
     refreshDataTable();
   };
@@ -292,6 +276,8 @@ $(document).ready(function(){
     var dataTableRows = '';
     for (var i = 0, j = 30000; i < modifiedResponses.length; i++, j += 10000) {
       dataTableRows += "<tr><td>$" + j + " - $" + (j+9999) + "</td><td>" + round(originalColazzisResponses[i]) + "</td><td>" + round(originalColazzisResponsesPercentage[i]) + "%</td><td>" + round(modifiedResponses[i]) + "</td><td>" + round(modifiedResponsesPercentage[i]) + "%</td></tr>";
+      $('#graph1 .col'+i).css('height', Math.round(originalColazzisResponsesPercentage[i]));
+      $('#graph2 .col'+i).css('height', Math.round(modifiedResponsesPercentage[i]));
     }
     $('#dataTable').append(dataTableRows);
   };
