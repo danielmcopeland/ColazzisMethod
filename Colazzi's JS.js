@@ -255,12 +255,13 @@ $(document).ready(function(){
     calculateOriginalColazzisPercentages();
     refreshRangeTable();
     refreshDataTable();
+    updateCharts();
   };
   
   deleteAllRanges = function() {
     salaryRanges = [];
     recalculateRanges();
-  }
+  };
   
   refreshRangeTable = function() {
     $('#rangeTable tr.bold').siblings().remove();
@@ -284,5 +285,110 @@ $(document).ready(function(){
  
   console.log("Hello");
 
+ 
 
+
+  var colaizziDataset = {
+    label: 'Colaizzi\'s Method',
+    backgroundColor: window.chartColors.red,
+    borderColor: window.chartColors.red,
+    data: originalColazzisResponsesPercentage
+  };
+
+  var modifiedDataset = {
+    label: 'Modified Method',
+    backgroundColor: window.chartColors.blue,
+    borderColor: window.chartColors.blue,
+    data: modifiedResponsesPercentage
+  };
+
+  var chartLabels = ['$30000 - $39999', '$40000 - $49999', '$50000 - $59999', '$60000 - $69999', '$70000 - $79999', '$80000 - $89999'];
+
+  updateCharts = function() {
+    window.sideBySideChart.update();
+    window.colaizziChart.update();
+    window.modifiedChart.update();
+  };
+
+  
+
+  window.onload = function() {
+    var sbs = document.getElementById('sideBySideChart').getContext('2d');
+    var modi = document.getElementById('modifiedChart').getContext('2d');
+    var cola = document.getElementById('colaizzisChart').getContext('2d');
+
+  
+
+    window.sideBySideChart = new Chart(sbs, {
+      type: 'bar',
+      data: {
+        labels: chartLabels,
+        datasets: [colaizziDataset, modifiedDataset]
+      },
+      options: {
+        elements: {
+          rectangle: {
+            borderWidth: 2,
+          }
+        },
+        responsive: true,
+        legend: {
+          position: 'top',
+        },
+        title: {
+          display: false,
+          text: 'Chart.js Horizontal Bar Chart'
+        }
+      }
+    });
+
+    window.modifiedChart = new Chart(modi, {
+      type: 'horizontalBar',
+      data: {
+        labels: chartLabels,
+        datasets: [modifiedDataset]
+      },
+      options: {
+        elements: {
+          rectangle: {
+            borderWidth: 2,
+          }
+        },
+        responsive: true,
+        legend: {
+          display: false,
+          position: 'right',
+        },
+        title: {
+          display: false,
+          text: 'Chart.js Horizontal Bar Chart'
+        }
+      }
+    });
+
+    window.colaizziChart = new Chart(cola, {
+      type: 'horizontalBar',
+      data: {
+        labels: chartLabels,
+        datasets: [colaizziDataset]
+      },
+      options: {
+        elements: {
+          rectangle: {
+            borderWidth: 2,
+          }
+        },
+        responsive: true,
+        legend: {
+          display: false,
+          position: 'right',
+        },
+        title: {
+          display: false,
+          text: 'Chart.js Horizontal Bar Chart'
+        }
+      }
+    });
+  };
+  console.log(Math.round(Samples.utils.rand(-100, 100)));
 });

@@ -11,139 +11,162 @@
 </head>
 <body>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+  <script src="https://www.chartjs.org/samples/latest/utils.js"></script>
   <script src="Colazzi's JS.js"></script>
-  <div class="header container">
+  <div class="header container-fluid">
     Colaizzi's Method
   </div>
-  <div class="section container">
-    <p>Below is a comparison of two methods of data analysis taken from an opinion survey on salary ranges for music therapists. Responses came from health 
-      administrators and health administration students. Colaizzi's Method identifies themes in responses and compares them based on their frequency. Since 
-      this method sometimes pulls multiple pieces of data from individual responses, some responses become weighted more heavily than others. This is 
-      effective for qualitative data and finding themes in written responses, but can cause inaccuracies when dealing with relational data (especially numerical data). </p>
-    <br>
-    <p>You can see how these innaccuracies occur below.</p>
-  </div>
-  <div class="section container">
+  <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-4 section">
-        <div>
-          <p>Input salary ranges between $30000 and $90000</p>
-          <p>(example: 45000-65000)</p>
-          <input type="number" id="inputLow" placeholder="Low">
-          <input type="number" id="inputHigh" placeholder="High">
-          <button onclick="submitRange();">Submit</button><br>
-          <button onclick="sampleStudentRanges();">Use Sample Student Responses</button>
-          <button onclick="sampleAdminRanges();">Use Sample Admin Responses</button>
+      <div class="row col-md-9">
+        <div class="card col-sm-3" id="explanation">
+
+            <p class="card-text">Here is a comparison of two methods of data analysis taken from an opinion survey on salary ranges for music therapists. Responses came from health 
+              administrators and health administration students. Colaizzi's Method identifies themes in responses and compares them based on their frequency. Since 
+              this method sometimes pulls multiple pieces of data from individual responses, some responses become weighted more heavily than others. This is 
+              effective for qualitative data and finding themes in written responses, but can cause inaccuracies when dealing with relational data (especially numerical data). </p>
+            <br>
+            <p class="card-text">You can see how these innaccuracies affect data visualization by adding your own data.</p>
+            <br>
+            <p class="card-text">For a great example of the differences, clear all the entries and input 49000-59000.</p>
+            <br>
+            <p class="card-text">Notice that while the majority of the input (49k-59k) falls under the range of 50000-59999,</p>
+            <p class="card-text">Colaizzi's Method treats ANY ranges that the input falls into EQUALLY.</p>
+            <br>
+            <p class="card-text">The modified method however adds weight to the portion of the input that falls in each range.</p>
+
         </div>
-        <div class="section">
-          <h3>Data Inputs</h3>
-          <table id="rangeTable">
-            <tbody>
-              <tr class="bold">
-                <td>Low</td>
-                <td>High</td>
-                <td><button class="deleteButton" onclick="deleteAllRanges();">Clear All</button></td>
-              </tr>
+        <div class="card col-sm-9" id="ranges">
+          <h3>Method Comparisons</h3>
+          <table id="dataTable">
+            <tbody><tr class="bold">
+              <td>Salary Range</td>
+              <td>Colaizzi's Method</td>
+              <td>Percentages</td>
+              <td>Modified Method</td>
+              <td>Percentages</td>
+            </tr>
+            <tr>
+              <td>$30000 - $39999</td>
+              <td>0</td>
+              <td>0%</td>
+              <td>0</td>
+              <td>0%</td>
+            </tr>
+            <tr>
+              <td>$40000 - $49999</td>
+              <td>0</td>
+              <td>0%</td>
+              <td>0</td>
+              <td>0%</td>
+            </tr>
+            <tr>
+              <td>$50000 - $59999</td>
+              <td>0</td>
+              <td>0%</td>
+              <td>0</td>
+              <td>0%</td>
+            </tr>
+            <tr>
+              <td>$60000 - $69999</td>
+              <td>0</td>
+              <td>0%</td>
+              <td>0</td>
+              <td>0%</td>
+            </tr>
+            <tr>
+              <td>$70000 - $79999</td>
+              <td>0</td>
+              <td>0%</td>
+              <td>0</td>
+              <td>0%</td>
+            </tr>
+            <tr>
+              <td>$80000 - $89999</td>
+              <td>0</td>
+              <td>0%</td>
+              <td>0</td>
+              <td>0%</td>
+            </tr>
             </tbody>
           </table>
+          <div class="container-fluid">
+            <div class="row">
+
+              <div class="card col-md-6">
+                <div class="card-body">
+                  <h3 class="card-header">Colaizzi's Method</h3>
+                  <canvas id="colaizzisChart" width="400" height="200"></canvas>
+                </div>
+              </div>
+
+              <div class="card col-md-6">
+                <div class="card-body">
+                  <h3 class="card-header">Modified Method</h3>
+                  <canvas id="modifiedChart" width="400" height="200"></canvas>
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+
+              <div class="card col-md-12">
+                <div class="card-body">
+                  <h3 class="card-header">Side-By-Side</h3>
+                  <canvas id="sideBySideChart" width="958" height="300"></canvas>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
         </div>
       </div>
-      <div class="col-sm-8 section" id="ranges">
-        <h3>Method Comparisons</h3>
-        <table id="dataTable">
-          <tbody><tr class="bold">
-            <td>Salary Range</td>
-            <td>Colaizzi's Method</td>
-            <td>Percentages</td>
-            <td>Modified Method</td>
-            <td>Percentages</td>
-          </tr>
-          <tr>
-            <td>$30000 - $39999</td>
-            <td>0</td>
-            <td>0%</td>
-            <td>0</td>
-            <td>0%</td>
-          </tr>
-          <tr>
-            <td>$40000 - $49999</td>
-            <td>0</td>
-            <td>0%</td>
-            <td>0</td>
-            <td>0%</td>
-          </tr>
-          <tr>
-            <td>$50000 - $59999</td>
-            <td>0</td>
-            <td>0%</td>
-            <td>0</td>
-            <td>0%</td>
-          </tr>
-          <tr>
-            <td>$60000 - $69999</td>
-            <td>0</td>
-            <td>0%</td>
-            <td>0</td>
-            <td>0%</td>
-          </tr>
-          <tr>
-            <td>$70000 - $79999</td>
-            <td>0</td>
-            <td>0%</td>
-            <td>0</td>
-            <td>0%</td>
-          </tr>
-          <tr>
-            <td>$80000 - $89999</td>
-            <td>0</td>
-            <td>0%</td>
-            <td>0</td>
-            <td>0%</td>
-          </tr>
-          </tbody>
-        </table>
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-6">
-              <div id="graphTitles" class="bold">
-                <div class="barTitle">Colaizzi's Method</div>
-              </div>
-              <div id="graph1">
-                <div class="barY"><div class="title100">100%</div></div><div class="bar col0" title="$30,000-$39,999"></div><div class="bar col1" title="$40,000-$49,999"></div><div class="bar col2" title="$50,000-$59,999"></div><div class="bar col3" title="$60,000-$69,999"></div><div class="bar col4" title="$70,000-$79,999"></div><div class="bar col5" title="$80,000-$89,999"></div>
-              </div>
-              <div id="graphLabels">
-                <div class="barLabel">
-                  <div id="barX">30k</div><div id="barX">40k</div><div id="barX">50k</div><div id="barX">60k</div><div id="barX">70k</div><div id="barX">80k</div>
-                </div>   
-              </div>
+
+      <div class="card col-md-3" id="inputs">
+
+        <div class="card" id="inputFields">
+          <div class="card-body">
+
+            <h3 class="card-header">Add New Data</h3>
+            <a class="card-text">Input salary ranges between $30000 and $90000 <br> <small>(example: 45000-65000)</small></a>
+
+            <div class="card-row">
+              <input class="form-group" type="number" id="inputLow" placeholder="Low">
+              <input class="form-group" type="number" id="inputHigh" placeholder="High">
+              <button class="btn btn-primary" type="button" onclick="submitRange();">Submit</button><br>
             </div>
-            <div class="col-sm-6">
-              <div id="graphTitles" class="bold">
-                <div class="barTitle">Modified Method</div>
-              </div>
-              <div id="graph2">
-                <div class="barY"><div class="title100">100%</div></div><div class="bar col0" title="$30,000-$39,999"></div><div class="bar col1" title="$40,000-$49,999"></div><div class="bar col2" title="$50,000-$59,999"></div><div class="bar col3" title="$60,000-$69,999"></div><div class="bar col4" title="$70,000-$79,999"></div><div class="bar col5" title="$80,000-$89,999"></div>
-              </div>
-              <div id="graphLabels">
-                <div class="barLabel">
-                  <div id="barX">30k</div><div id="barX">40k</div><div id="barX">50k</div><div id="barX">60k</div><div id="barX">70k</div><div id="barX">80k</div>
-                </div>   
-              </div>
+          
+            <div class="card-row">
+              <button class="btn btn-success" type="button" onclick="sampleStudentRanges();">Sample Student Responses</button>
+              <button class="btn btn-success" type="button" onclick="sampleAdminRanges();">Sample Admin Responses</button>
             </div>
+
+          </div>
+        </div>
+        <br>
+        <div class="card" id="inputTracker">
+          <div class="card-body">
+            <h3 class="card-header">Data Inputs</h3>
+            <table id="rangeTable">
+              <tbody>
+                <tr class="bold">
+                  <td>Low</td>
+                  <td>High</td>
+                  <td><button class="deleteButton" onclick="deleteAllRanges();">Clear All</button></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
+
     </div>
   </div>
-  <div class="section container">
-    <p>For a great example of the differences, clear all the entries and input 49000-59000.</p>
-    <br>
-    <p>Notice that while the majority of the input (49k-59k) falls under the range of 50000-59999,</p>
-    <p>Colaizzi's Method treats ANY ranges that the input falls into EQUALLY.</p>
-    <br>
-    <p>The modified method however adds weight to the portion of the input that falls in each range.</p>
-  </div>
 
+ 
+ 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>

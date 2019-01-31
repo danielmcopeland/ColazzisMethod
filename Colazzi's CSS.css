@@ -19,6 +19,7 @@ p {
 #ranges {
   padding-left: 30px;
   padding-bottom: 20px;
+  min-width: 700px;
 }
 
 .header {
@@ -28,7 +29,9 @@ p {
   background-color: #8a8787d2;
 }
 
-
+#inputs {
+  background-color: #8a8787d2;
+}
 
 #rangeTable, tr {
   border: 1px solid #b3b3b3;
@@ -104,6 +107,10 @@ input {
 #barX {
   font-size: 10px;
   margin-right: 7.5px;
+}
+
+.modified {
+  width: 188px;
 }
 
 .barTitle, .barLabel {
