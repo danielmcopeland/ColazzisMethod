@@ -222,6 +222,21 @@ $(document).ready(function(){
     addRange(45000, 55000);
     addRange(50000, 60000);
   };
+
+  sampleCrazyData = function() {
+    deleteAllRanges();
+    addRange(35000, 60000);
+    addRange(60000, 85000);
+    addRange(39000, 89000);
+    addRange(39000, 51000);
+    addRange(60000, 90000);
+    addRange(60000, 60000);
+    addRange(50000, 50000);
+    addRange(40000, 40000);
+    addRange(30000, 30000);
+    addRange(70000, 70000);
+    addRange(80000, 80000);
+  }
   
   var salaryRanges = [];
   
@@ -267,7 +282,7 @@ $(document).ready(function(){
     $('#rangeTable tr.bold').siblings().remove();
     var rangeTableRows = '';
     $(salaryRanges).each(function(i, data) {
-      rangeTableRows += "<tr><td>" + data[0] + "</td><td>" + data[1] + "</td><td><button onClick=\"deleteRange("+i+")\" class=\"deleteButton\">Clear Entry</button></td></tr>";
+      rangeTableRows += "<tr><td>" + data[0] + "</td><td>" + data[1] + "</td><td><button onClick=\"deleteRange("+i+")\" class=\"btn btn-danger deleteButton\">Clear Entry</button></td></tr>";
     });
     $('#rangeTable').append(rangeTableRows);
   };

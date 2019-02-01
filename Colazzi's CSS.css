@@ -26,11 +26,12 @@ p {
   font-size: 50px;
   font-weight: bold;
   color: black;
-  background-color: #8a8787d2;
+  background-color: white;
 }
 
-#inputs {
-  background-color: #8a8787d2;
+
+.sect {
+  background-color: grey;
 }
 
 #rangeTable, tr {
@@ -53,13 +54,16 @@ input {
   padding: 1px 6px;
 }
 
+.buttonMargin {
+  margin: 2px;
+}
+
 .bold {
   font-weight: bold;
 }
 
 .deleteButton {
   font-weight: bold;
-  color: red;
   float: right;
   width: 100%;
 }
