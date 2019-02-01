@@ -300,9 +300,6 @@ $(document).ready(function(){
  
   console.log("Hello");
 
- 
-
-
   var colaizziDataset = {
     label: 'Colaizzi\'s Method',
     backgroundColor: window.chartColors.red,
