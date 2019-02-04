@@ -1,219 +1,225 @@
 <html lang="en"><head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Colaizzi's Method</title> 
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Colaizzi's Method</title> 
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
 
-  
-  <link rel="shortcut icon" type="image/ico" href="favicon.ico">
-  <link rel="stylesheet" type="text/css" href="Colazzi's CSS.css">
-</head>
-<body class="sect">
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
-  <script src="https://www.chartjs.org/samples/latest/utils.js"></script>
-  <script src="Colazzi's JS.js"></script>
-  <div class="header container-fluid">
-    Colaizzi's Method
-  </div>
 
-  <div class="container-fluid">
-    <div class="row">
-      <div class="fluid col-sm-3 sect" id="explanation">
-        
-        <div class="card">
-          <div class="card-body">
-            <h3 class="card-header">The problem with Colaizzi's Method</h3>
-            <p class="card-text">
-                Here is a comparison of two methods of data analysis taken from an opinion survey on salary ranges for music therapists. Responses came from health 
-                administrators and health administration students. Colaizzi's Method identifies themes in responses and compares them based on their frequency. Since 
-                this method sometimes pulls multiple pieces of data from individual responses, some responses become weighted more heavily than others. This is 
-                effective for qualitative data and finding themes in written responses, but can cause inaccuracies when dealing with relational data (especially numerical data).
-                <br>
-                You can see how these innaccuracies affect data visualization by adding your own data.      
-            </p>
-          </div>
-        </div>
-        <br>
-        <div class="card">
-          <div class="card-body">
-            <p class="card-text">For a great example of the differences, clear all the entries and input 49000-59000.</p>
-            <br>
-            <p class="card-text">
-              Notice that while the majority of the input (49k-59k) falls under the range of 50000-59999,
-              Colaizzi's Method treats ANY ranges that the input falls into EQUALLY.
-              The modified method however adds weight to the portion of the input that falls in each range.
-            </p>
-          </div>
-
-        </div>
-        
-          
-
-      </div>
-      <div class="col-sm-6 sect" id="ranges">
-          <div class="card">
-            <div class="card-body">
-              <h3 class="card-header">Method Comparisons</h3>
-              <table class="col-md-12" id="dataTable">
-                <tbody><tr class="bold">
-                  <td>Salary Range</td>
-                  <td>Colaizzi's Method</td>
-                  <td>Percentages</td>
-                  <td>Modified Method</td>
-                  <td>Percentages</td>
-                </tr>
-                <tr>
-                  <td>$30000 - $39999</td>
-                  <td>0</td>
-                  <td>0%</td>
-                  <td>0</td>
-                  <td>0%</td>
-                </tr>
-                <tr>
-                  <td>$40000 - $49999</td>
-                  <td>0</td>
-                  <td>0%</td>
-                  <td>0</td>
-                  <td>0%</td>
-                </tr>
-                <tr>
-                  <td>$50000 - $59999</td>
-                  <td>0</td>
-                  <td>0%</td>
-                  <td>0</td>
-                  <td>0%</td>
-                </tr>
-                <tr>
-                  <td>$60000 - $69999</td>
-                  <td>0</td>
-                  <td>0%</td>
-                  <td>0</td>
-                  <td>0%</td>
-                </tr>
-                <tr>
-                  <td>$70000 - $79999</td>
-                  <td>0</td>
-                  <td>0%</td>
-                  <td>0</td>
-                  <td>0%</td>
-                </tr>
-                <tr>
-                  <td>$80000 - $89999</td>
-                  <td>0</td>
-                  <td>0%</td>
-                  <td>0</td>
-                  <td>0%</td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div class="container-fluid">
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="Colazzi's CSS.css">
+    </head>
+    <body class="sect">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+        <script src="https://www.chartjs.org/samples/latest/utils.js"></script>
+        <script src="Colazzi's JS.js"></script>
+        <div class="header container-fluid">
             <div class="row">
-  
-              <div class="card col-md-6">
-                <div class="card-body">
-                  <h3 class="card-header">Colaizzi's Method</h3>
-                  <canvas id="colaizzisChart" width="400" height="200"></canvas>
+                <div class="col">
+                    Colaizzi's Method
                 </div>
-              </div>
-  
-              <div class="card col-md-6">
-                <div class="card-body">
-                  <h3 class="card-header">Modified Method</h3>
-                  <canvas id="modifiedChart" width="400" height="200"></canvas>
-                </div>
-              </div>
-  
             </div>
+        </div>
+
+        <div class="container-fluid">
             <div class="row">
-  
-              <div class="card col-md-12">
-                <div class="card-body">
-                  <h3 class="card-header">Side-By-Side</h3>
-                  <canvas id="sideBySideChart" width="958" height="350"></canvas>
+                <div class="col-sm-3" id="explanation">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-header">The problem with Colaizzi's Method</h3>
+                            <p class="card-text">
+                                Here is a comparison of two methods of data analysis taken from an opinion survey on salary ranges for music therapists. Responses came from health 
+                                administrators and health administration students. Colaizzi's Method identifies themes in responses and compares them based on their frequency. Since 
+                                this method sometimes pulls multiple pieces of data from individual responses, some responses become weighted more heavily than others. This is 
+                                effective for qualitative data and finding themes in written responses, but can cause inaccuracies when dealing with relational data (especially numerical data).
+                                <br>
+                                You can see how these innaccuracies affect data visualization by adding your own data.      
+                            </p>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-text">For a great example of the differences, clear all the entries and input 49000-59000.</p>
+                            <br>
+                            <p class="card-text">
+                                Notice that while the majority of the input (49k-59k) falls under the range of 50000-59999,
+                                Colaizzi's Method treats ANY ranges that the input falls into EQUALLY.
+                                The modified method however adds weight to the portion of the input that falls in each range.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+
                 </div>
-              </div>
-  
+                <div class="col-sm-6" id="ranges">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-header">Method Comparisons</h3>
+                            <table class="table" id="dataTable">
+                                <thead>
+                                    <th scope="col">Salary Range</th>
+                                    <th scope="col">Colaizzi's Method</th>
+                                    <th scope="col">Percentages</th>
+                                    <th scope="col">Modified Method</th>
+                                    <th scope="col">Percentages</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">$30000 - $39999</th>
+                                        <td>0</td>
+                                        <td>0%</td>
+                                        <td>0</td>
+                                        <td>0%</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">$40000 - $49999</th>
+                                        <td>0</td>
+                                        <td>0%</td>
+                                        <td>0</td>
+                                        <td>0%</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">$50000 - $59999</th>
+                                        <td>0</td>
+                                        <td>0%</td>
+                                        <td>0</td>
+                                        <td>0%</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">$60000 - $69999</th>
+                                        <td>0</td>
+                                        <td>0%</td>
+                                        <td>0</td>
+                                        <td>0%</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">$70000 - $79999</th>
+                                        <td>0</td>
+                                        <td>0%</td>
+                                        <td>0</td>
+                                        <td>0%</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">$80000 - $89999</th>
+                                        <td>0</td>
+                                        <td>0%</td>
+                                        <td>0</td>
+                                        <td>0%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="container-fluid">
+                        <div class="row">
+
+                            <div class="card col-md-6">
+                                <div class="card-body">
+                                    <h3 class="card-header">Colaizzi's Method</h3>
+                                    <canvas id="colaizzisChart" width="400" height="200"></canvas>
+                                </div>
+                            </div>
+
+                            <div class="card col-md-6">
+                                <div class="card-body">
+                                    <h3 class="card-header">Modified Method</h3>
+                                    <canvas id="modifiedChart" width="400" height="200"></canvas>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+
+                            <div class="card col-md-12">
+                                <div class="card-body">
+                                    <h3 class="card-header">Side-By-Side</h3>
+                                    <canvas id="sideBySideChart" width="958" height="350"></canvas>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-sm-3" id="inputs">
+
+                    <div class="card" id="inputFields">
+                        <div class="card-body">
+                            <h3 class="card-header">Add New Data</h3>
+                            <a class="card-text">Input salary ranges between $30000 and $90000 <br> <small>(example: 45000-65000)</small></a>
+                            <form>
+                                <div class="form-row">
+                                    <div class="form-group col-sm-4">
+                                        <label for="inputLow" class="sr-only">Low</label>
+                                        <input class="form-control" type="number" id="inputLow" placeholder="Low">
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <label for="inputHigh" class="sr-only">high</label>
+                                        <input class="form-control" type="number" id="inputHigh" placeholder="high">
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <button class="btn btn-primary" type="button" onclick="submitRange();">Submit</button>
+                                    </div>
+                                </div>
+                                <a class="card-text">Or, try actual data from test group subjects</a>
+                                <br>
+                                <br>
+                                <div class="form-row">
+                                    <div class="form-group col-sm-8">
+                                        <input class="form-control" type="text" placeholder="Sample of Medical Students" readonly>
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <button class="btn btn-success" type="button" onclick="sampleStudentRanges();">Use</button>  
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-sm-8">
+                                        <input class="form-control" type="text" placeholder="Sample of Medical Professionals" readonly>
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <button class="btn btn-success" type="button" onclick="sampleAdminRanges();">Use</button>  
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-sm-8">
+                                        <input class="form-control" type="text" placeholder="Sample of CRAZY data" readonly>
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <button class="btn btn-success" type="button" onclick="sampleCrazyData();">Use</button>  
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="card" id="inputTracker">
+                        <div class="card-body">
+                            <h3 class="card-header">Data Inputs</h3>
+                            <table class="col-md-12" id="rangeTable">
+                                <tbody>
+                                    <tr class="bold">
+                                        <td>Low</td>
+                                        <td>High</td>
+                                        <td><button class="btn btn-danger deleteButton" onclick="deleteAllRanges();">Clear All</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-  
         </div>
-      <div class="col-sm-3 sect" id="inputs">
-        
-          <div class="card" id="inputFields">
-              <div class="card-body">
-                <h3 class="card-header">Add New Data</h3>
-                <a class="card-text">Input salary ranges between $30000 and $90000 <br> <small>(example: 45000-65000)</small></a>
-                <form>
-                  <div class="form-row">
-                    <div class="form-group col-sm-4">
-                      <label for="inputLow" class="sr-only">Low</label>
-                      <input class="form-control" type="number" id="inputLow" placeholder="Low">
-                    </div>
-                    <div class="form-group col-sm-4">
-                      <label for="inputHigh" class="sr-only">high</label>
-                      <input class="form-control" type="number" id="inputHigh" placeholder="high">
-                    </div>
-                    <div class="form-group col-sm-4">
-                      <button class="btn btn-primary" type="button" onclick="submitRange();">Submit</button>
-                    </div>
-                  </div>
-                  <a class="card-text">Or, try actual data from test group subjects</a>
-                  <br>
-                  <br>
-                  <div class="form-row">
-                      <div class="form-group col-sm-8">
-                        <input class="form-control" type="text" placeholder="Sample of Medical Students" readonly>
-                      </div>
-                      <div class="form-group col-sm-4">
-                        <button class="btn btn-success" type="button" onclick="sampleStudentRanges();">Use</button>  
-                      </div>
-                  </div>
-                  <div class="form-row">
-                    <div class="form-group col-sm-8">
-                      <input class="form-control" type="text" placeholder="Sample of Medical Professionals" readonly>
-                    </div>
-                    <div class="form-group col-sm-4">
-                      <button class="btn btn-success" type="button" onclick="sampleAdminRanges();">Use</button>  
-                    </div>
-                  </div>
-                  <div class="form-row">
-                      <div class="form-group col-sm-8">
-                        <input class="form-control" type="text" placeholder="Sample of CRAZY data" readonly>
-                      </div>
-                      <div class="form-group col-sm-4">
-                        <button class="btn btn-success" type="button" onclick="sampleCrazyData();">Use</button>  
-                      </div>
-                    </div>
-                </form>
-              </div>
-          </div>
-        <br>
-        <div class="card" id="inputTracker">
-          <div class="card-body">
-            <h3 class="card-header">Data Inputs</h3>
-            <table class="col-md-12" id="rangeTable">
-              <tbody>
-                <tr class="bold">
-                  <td>Low</td>
-                  <td>High</td>
-                  <td><button class="btn btn-danger deleteButton" onclick="deleteAllRanges();">Clear All</button></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
- 
- 
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
 
-</body></html>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+
+    </body>
+</html>
